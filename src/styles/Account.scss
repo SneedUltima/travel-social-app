@@ -40,7 +40,7 @@ $text-color: #5d5b8d;
 
       input {
         border: none;
-        padding: 10px;
+        padding: 10px 10px 5px 10px;
         border-bottom: 1px solid $background-color;
         background-color: $foreground-color;
         &::placeholder {

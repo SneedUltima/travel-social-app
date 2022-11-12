@@ -11,7 +11,7 @@ const Register = () => {
   return (
     <div className="formContainer">
       <div className="formWrapper">
-        <span className="logo">Sneed Chat</span>
+        <span className="logo">Nomad</span>
         <span className="title">Register</span>
         <form onSubmit="">
           <input type="text" placeholder="Display Name" />
@@ -25,7 +25,7 @@ const Register = () => {
           <button>Sign up</button>
           {error && <span>Something went wrong</span>}
         </form>
-        <p>You do not have an account? Login</p>
+        <p>Have an account? Login</p>
       </div>
     </div>
   );
