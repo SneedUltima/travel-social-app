@@ -18,7 +18,8 @@ $text-color: 9DABF3;
     justify-content: center;
     gap: 5px;
     padding: 10px 5px;
-    input {
+    textarea {
+      resize: none;
       padding: 10px 5px;
       border-radius: 5px;
       border: 1px solid grey;
@@ -30,7 +31,21 @@ $text-color: 9DABF3;
         outline: none;
       }
     }
-    button {
+    input {
+      padding: 10px 5px;
+      border-radius: 5px;
+      width: 150px;
+      border: 1px solid grey;
+
+      &::placeholder {
+        color: rgb(175, 175, 175);
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+    button,
+    #clear-button {
       background-color: $background-color;
       border: none;
       color: white;
@@ -38,11 +53,25 @@ $text-color: 9DABF3;
       padding: 10px 15px;
       border-radius: 5px;
       cursor: pointer;
+      width: 150px;
 
       &:hover {
         background-color: lighten($background-color, 10%);
         transition: 0.3s;
       }
+    }
+
+    #clear-button {
+      background-color: rgb(218, 39, 39);
+
+      &:hover {
+        background-color: rgb(238, 32, 32);
+      }
+    }
+
+    #file-icon,
+    span {
+      cursor: pointer;
     }
   }
 }
