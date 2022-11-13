@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.item-card-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  width: 200px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  .image {
+    img {
+      width: 200px;
+      object-fit: cover;
+      filter: brightness(40%);
+    }
+    .image-text {
+      color: white;
+      position: absolute;
+      top: 5px;
+      left: 10px;
+      font-size: 18px;
+
+      p:last-child {
+        font-size: 10px;
+      }
+    }
+  }
+  .text-container {
+    padding: 10px 10px;
+    .tags {
+      display: flex;
+      gap: 5px;
+      font-size: 10px;
+      color: rgb(112, 111, 111);
+    }
+    .title {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+    .text {
+      font-size: 12px;
+      margin-bottom: 10px;
+      color: rgb(112, 111, 111);
+    }
+    .likes {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      #like-icon {
+        cursor: pointer;
+        color: rgb(44, 44, 118);
+      }
+    }
+  }
+}

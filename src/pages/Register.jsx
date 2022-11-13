@@ -19,7 +19,7 @@ const Register = () => {
           <input type="password" placeholder="Password" />
           <input style={{ display: "none" }} type="file" id="file" />
           <label htmlFor="file">
-            <FontAwesomeIcon id="cart-icon" icon={faImages} />
+            <FontAwesomeIcon id="file-icon" icon={faImages} />
             <span>Add an avatar</span>
           </label>
           <button>Sign up</button>
