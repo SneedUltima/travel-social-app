@@ -5,15 +5,19 @@ import "../styles/Account.scss";
 const Login = () => {
   const [error, setError] = useState(false);
 
+  const handleLogin = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="formContainer">
       <div className="formWrapper">
         <span className="logo">Nomad</span>
         <span className="title">Login</span>
-        <form onSubmit="">
+        <form onSubmit={handleLogin}>
           <input type="email" placeholder="Email" />
           <input type="password" placeholder="Password" />
-          <button>Sign in</button>
+          <button type="submit">Sign in</button>
           {error && <span>Something went wrong</span>}
         </form>
         <p>You do not have an account? Register</p>
