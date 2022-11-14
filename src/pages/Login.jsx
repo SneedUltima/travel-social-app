@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import "../styles/Account.scss";
+import { useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
   const [error, setError] = useState(false);
@@ -20,7 +21,9 @@ const Login = () => {
           <button type="submit">Sign in</button>
           {error && <span>Something went wrong</span>}
         </form>
-        <p>You do not have an account? Register</p>
+        <p>
+          Don't have an account? <Link to="/register">Register</Link>
+        </p>
       </div>
     </div>
   );
