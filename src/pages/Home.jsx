@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../styles/Home.scss";
 import Navbar from "../components/Navbar";
 import ItemCard from "../components/ItemCard";
@@ -7,9 +7,10 @@ import AddLocation from "../components/AddLocation";
 import LocationInfo from "../components/LocationInfo";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
+import { AuthContext } from "../context/AuthContext";
 
 const Home = () => {
-  const [docs, setDocs] = useState([]);
+  const { docs, setDocs } = useContext(AuthContext);
 
   useEffect(() => {
     const query = async () => {

@@ -8,7 +8,7 @@ import { AuthContext } from "../context/AuthContext";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const AddLocation = () => {
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser, docs, setDocs } = useContext(AuthContext);
 
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -44,6 +44,20 @@ const AddLocation = () => {
               photoURL: downloadURL,
               author: currentUser.displayName,
             });
+            setDocs((prevState) => [
+              ...prevState,
+              {
+                data: {
+                  title: title,
+                  tags: tags,
+                  message: message,
+                  likes: 0,
+                  date: date,
+                  photoURL: downloadURL,
+                  author: currentUser.displayName,
+                },
+              },
+            ]);
           });
         }
       );
