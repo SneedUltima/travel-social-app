@@ -5,33 +5,27 @@ import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { faThumbsUp as faLightThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import "../styles/ItemCard.scss";
 
-const ItemCard = () => {
+const ItemCard = ({ image, author, date, tags, title, message, likes }) => {
   const [like, setLike] = useState(false);
 
   return (
     <div className="item-card-container">
       <div className="image">
-        <img src={Dubrovnik} alt="" />
+        <img src={image} alt="" />
         <div className="image-text">
-          <p>author</p>
-          <p>2 hours ago</p>
+          <p>{author}</p>
+          <p>{date}</p>
         </div>
       </div>
       <div className="text-container">
         <div className="tags">
-          <p>#dubrovnik</p>
-          <p>#crotia</p>
-          <p>#europe</p>
+          <p>{tags}</p>
         </div>
         <div className="title">
-          <p>Dubrovnik</p>
+          <p>{title}</p>
         </div>
         <div className="text">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
-            officia laudantium sed repellendus ratione illo nihil velit! Fugiat,
-            cupiditate! Eius ratione consectetur libero accusantium. Quisquam.
-          </p>
+          <p>{message}</p>
         </div>
         <div className="likes">
           {like ? (
@@ -47,7 +41,7 @@ const ItemCard = () => {
               onClick={() => (like ? setLike(false) : setLike(true))}
             />
           )}
-          <p>1 Like</p>
+          <p>{likes}</p>
         </div>
       </div>
     </div>

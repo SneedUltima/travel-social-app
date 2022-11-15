@@ -21,7 +21,7 @@ const AddLocation = () => {
           <FontAwesomeIcon id="file-icon" icon={faImages} />
           <span>Add an Image</span>
         </label>
-        <button>Search</button>
+        <button>Add Location</button>
         <button id="clear-button">Clear</button>
       </div>
     </div>

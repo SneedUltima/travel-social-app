@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.home-wrapper {
+  border: 1px solid black;
+  height: 88vh;
+  margin: 0 15px;
+  .home-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    padding: 5px 5px;
+
+    .item-container {
+    }
+    .user-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+}
