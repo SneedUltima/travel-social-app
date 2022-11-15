@@ -5,9 +5,11 @@ const SearchLocation = () => {
   return (
     <div className="panel-wrapper">
       <div className="panel-container">
-        <input type="text" placeholder="Search Locations" />
-        <input type="text" placeholder="Search Tags" />
-        <button>Search</button>
+        <form action="">
+          <input type="text" placeholder="Search Locations" />
+          <input type="text" placeholder="Search Tags" />
+          <button>Search</button>
+        </form>
       </div>
     </div>
   );

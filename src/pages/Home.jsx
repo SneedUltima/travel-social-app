@@ -37,7 +37,7 @@ const Home = () => {
               <ItemCard
                 image={doc.data.photoURL}
                 author={doc.data.author}
-                // date={doc.data.date}
+                date={doc.data.date}
                 tags={doc.data.tags}
                 title={doc.data.title}
                 message={doc.data.message}
