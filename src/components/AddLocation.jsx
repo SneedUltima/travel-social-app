@@ -11,6 +11,7 @@ const AddLocation = () => {
   const { currentUser } = useContext(AuthContext);
 
   const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,30 +57,16 @@ const AddLocation = () => {
     <div className="panel-wrapper">
       <div className="panel-container">
         <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Title of Location"
-            // onChange={(e) => setTitle(e.target.value)}
-          />
+          <input type="text" placeholder="Title of Location" />
           <textarea
-            name=""
-            id=""
-            cols="18"
+            name="message"
+            id="message"
+            cols="16"
             rows="6"
             placeholder="Message"
-            // onChange={(e) => setMessage(e.target.value)}
           ></textarea>
-          <input
-            type="text"
-            placeholder="Tags"
-            // onChange={(e) => setTags(e.target.value)}
-          />
-          <input
-            style={{ display: "none" }}
-            type="file"
-            id="file"
-            // onChange={(e) => setFile(e.target.files[0])}
-          />
+          <input type="text" placeholder="Tags" />
+          <input style={{ display: "none" }} type="file" id="file" />
           <label htmlFor="file">
             <FontAwesomeIcon id="file-icon" icon={faImages} />
             <span>Add an Image</span>
