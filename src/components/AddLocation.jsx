@@ -11,7 +11,9 @@ const AddLocation = () => {
   const { currentUser, docs, setDocs } = useContext(AuthContext);
 
   const [error, setError] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const [title, setTitle] = useState("");
+  const [message, setMessage] = useState("");
+  const [tags, setTags] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -58,6 +60,9 @@ const AddLocation = () => {
                 },
               },
             ]);
+            setTitle("");
+            setMessage("");
+            setTags("");
           });
         }
       );
@@ -71,15 +76,27 @@ const AddLocation = () => {
     <div className="panel-wrapper">
       <div className="panel-container">
         <form onSubmit={handleSubmit}>
-          <input type="text" placeholder="Title of Location" />
+          <input
+            type="text"
+            placeholder="Title of Location"
+            onChange={(event) => setTitle(event.target.value)}
+            value={title}
+          />
           <textarea
             name="message"
             id="message"
-            cols="16"
+            cols="13"
             rows="6"
             placeholder="Message"
+            onChange={(event) => setMessage(event.target.value)}
+            value={message}
           ></textarea>
-          <input type="text" placeholder="Tags" />
+          <input
+            type="text"
+            placeholder="Tags"
+            onChange={(event) => setTags(event.target.value)}
+            value={tags}
+          />
           <input style={{ display: "none" }} type="file" id="file" />
           <label htmlFor="file">
             <FontAwesomeIcon id="file-icon" icon={faImages} />
