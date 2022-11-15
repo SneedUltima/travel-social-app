@@ -25,7 +25,9 @@ const ItemCard = ({ image, author, date, tags, title, message, likes }) => {
           <p>{title}</p>
         </div>
         <div className="text">
-          <p>{message}</p>
+          <p>
+            {message.length > 160 ? `${message.substring(0, 160)}...` : message}
+          </p>
         </div>
         <div className="likes">
           {like ? (
@@ -41,7 +43,7 @@ const ItemCard = ({ image, author, date, tags, title, message, likes }) => {
               onClick={() => (like ? setLike(false) : setLike(true))}
             />
           )}
-          <p>{likes}</p>
+          <p>{likes} Likes</p>
         </div>
       </div>
     </div>
