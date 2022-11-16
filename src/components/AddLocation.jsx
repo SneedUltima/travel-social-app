@@ -17,6 +17,7 @@ const AddLocation = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const year = new Date().getFullYear();
     let monthNumber = new Date();
     let month = monthNumber.toLocaleString("default", { month: "long" });
@@ -26,6 +27,10 @@ const AddLocation = () => {
     const message = e.target[1].value;
     const tags = e.target[2].value;
     const file = e.target[3].files[0];
+
+    setTitle("");
+    setMessage("");
+    setTags("");
 
     try {
       const storageRef = ref(Storage, title);
@@ -60,9 +65,6 @@ const AddLocation = () => {
                 },
               },
             ]);
-            setTitle("");
-            setMessage("");
-            setTags("");
           });
         }
       );
@@ -102,7 +104,9 @@ const AddLocation = () => {
             <FontAwesomeIcon id="file-icon" icon={faImages} />
             <span>Add an Image</span>
           </label>
-          <button type="submit">Add Location</button>
+          <button type="submit" disabled={!title && !message && !tags}>
+            Add Location
+          </button>
           {error && <span id="error">Something went wrong</span>}
         </form>
       </div>
