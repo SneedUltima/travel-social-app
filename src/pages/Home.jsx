@@ -24,9 +24,7 @@ const Home = () => {
     return () => {
       query();
     };
-  }, []);
-
-  console.log(docs);
+  }, [setDocs]);
 
   return (
     <div>
