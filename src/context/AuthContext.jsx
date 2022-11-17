@@ -8,6 +8,7 @@ export const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState({});
   const [docs, setDocs] = useState([]);
   const [locationInfo, setLocationInfo] = useState({});
+  const [clickLocation, setClickLocation] = useState(false);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(Auth, (user) => {
@@ -21,7 +22,15 @@ export const AuthContextProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ currentUser, docs, setDocs, locationInfo, setLocationInfo }}
+      value={{
+        currentUser,
+        docs,
+        setDocs,
+        locationInfo,
+        setLocationInfo,
+        clickLocation,
+        setClickLocation,
+      }}
     >
       {children}
     </AuthContext.Provider>

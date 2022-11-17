@@ -1,16 +1,35 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Dubrovnik from "../images/dubrovnik.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { faThumbsUp as faLightThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import "../styles/ItemCard.scss";
+import { AuthContext } from "../context/AuthContext";
 
 const ItemCard = ({ image, author, date, tags, title, message, likes }) => {
+  const { locationInfo, setLocationInfo, clickLocation, setClickLocation } =
+    useContext(AuthContext);
   const [like, setLike] = useState(false);
+
+  const handleClick = () => {
+    setClickLocation(true);
+    console.log(image);
+    setLocationInfo((existingValues) => ({
+      ...existingValues,
+      image,
+      author,
+      date,
+      tags,
+      title,
+      message,
+      likes,
+    }));
+    console.log(locationInfo);
+  };
 
   return (
     <div className="item-card-container">
-      <div className="image">
+      <div className="image" onClick={() => handleClick()}>
         <img src={image} alt="" />
         <div className="image-text">
           <p>{author}</p>

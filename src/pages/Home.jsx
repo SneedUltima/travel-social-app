@@ -10,7 +10,14 @@ import { db } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
 
 const Home = () => {
-  const { docs, setDocs } = useContext(AuthContext);
+  const {
+    docs,
+    setDocs,
+    locationInfo,
+    setLocationInfo,
+    clickLocation,
+    setClickLocation,
+  } = useContext(AuthContext);
 
   useEffect(() => {
     const query = async () => {
@@ -32,18 +39,22 @@ const Home = () => {
       <div className="home-wrapper">
         <div className="home-container">
           <div className="item-container">
-            {docs.map((doc) => (
-              <ItemCard
-                image={doc.data.photoURL}
-                author={doc.data.author}
-                date={doc.data.date}
-                tags={doc.data.tags}
-                title={doc.data.title}
-                message={doc.data.message}
-                likes={doc.data.likes}
-                key={doc.data.title}
-              />
-            ))}
+            {clickLocation ? (
+              <LocationInfo />
+            ) : (
+              docs.map((doc) => (
+                <ItemCard
+                  image={doc.data.photoURL}
+                  author={doc.data.author}
+                  date={doc.data.date}
+                  tags={doc.data.tags}
+                  title={doc.data.title}
+                  message={doc.data.message}
+                  likes={doc.data.likes}
+                  key={doc.data.title}
+                />
+              ))
+            )}
           </div>
           <div className="user-container">
             <SearchLocation />

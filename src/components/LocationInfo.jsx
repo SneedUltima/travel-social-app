@@ -1,35 +1,30 @@
-import React from "react";
-import Dubrovnik from "../images/dubrovnik.jpg";
+import React, { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 import "../styles/ItemInfo.scss";
 
 const LocationInfo = () => {
+  const { locationInfo } = useContext(AuthContext);
+
   return (
     <div className="item-info-container">
       <div className="item-info-wrapper">
         <div className="text-container">
           <div className="title">
-            <p>Dubrovnik</p>
+            <p>{locationInfo.title}</p>
           </div>
           <div className="tags">
-            <p>#dubrovnik</p>
-            <p>#crotia</p>
-            <p>#europe</p>
+            <p>{locationInfo.tags}</p>
           </div>
           <div className="text">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
-              officia laudantium sed repellendus ratione illo nihil velit!
-              Fugiat, cupiditate! Eius ratione consectetur libero accusantium.
-              Quisquam.
-            </p>
+            <p>{locationInfo.message}</p>
           </div>
           <div className="author-text">
-            <p>author</p>
-            <p id="time">2 hours ago</p>
+            <p>{locationInfo.author}</p>
+            <p id="time">{locationInfo.date}</p>
           </div>
         </div>
         <div className="image-container">
-          <img src={Dubrovnik} alt="" />
+          <img src={locationInfo.image} alt="" />
         </div>
       </div>
     </div>
