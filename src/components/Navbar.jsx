@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <div className="nav-container">
       <div className="logo">
-        <p>Nomad</p>
+        <p onClick={() => window.location.reload(false)}>Nomad</p>
       </div>
       <div className="user-container">
         <img src={currentUser.photoURL} alt="Profile Picture" />

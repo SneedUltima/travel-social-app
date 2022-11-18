@@ -1,15 +1,17 @@
-import React, { useContext, useState } from "react";
-import Dubrovnik from "../images/dubrovnik.jpg";
+import React, { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { faThumbsUp as faLightThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import "../styles/ItemCard.scss";
 import { AuthContext } from "../context/AuthContext";
+import { doc, increment, updateDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
 const ItemCard = ({ image, author, date, tags, title, message, likes }) => {
   const { locationInfo, setLocationInfo, setClickLocation } =
     useContext(AuthContext);
   const [like, setLike] = useState(false);
+  const [likeCounter, setLikeCounter] = useState(likes);
 
   const handleClick = () => {
     setClickLocation(true);
@@ -24,7 +26,15 @@ const ItemCard = ({ image, author, date, tags, title, message, likes }) => {
       message,
       likes,
     }));
-    console.log(locationInfo);
+  };
+
+  const handleLike = async (title) => {
+    setLike(true);
+    const likesRef = doc(db, "locations", title);
+    await updateDoc(likesRef, {
+      likes: increment(1),
+    });
+    setLikeCounter((prevValue) => prevValue + 1);
   };
 
   return (
@@ -59,10 +69,10 @@ const ItemCard = ({ image, author, date, tags, title, message, likes }) => {
             <FontAwesomeIcon
               id="like-icon"
               icon={faLightThumbsUp}
-              onClick={() => (like ? setLike(false) : setLike(true))}
+              onClick={() => handleLike(title)}
             />
           )}
-          <p>{likes} Likes</p>
+          <p>{likeCounter} Likes</p>
         </div>
       </div>
     </div>

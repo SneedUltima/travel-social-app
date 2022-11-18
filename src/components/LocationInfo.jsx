@@ -23,7 +23,9 @@ const LocationInfo = () => {
             <p id="time">At {locationInfo.date}</p>
           </div>
           <div className="button">
-            <button onClick={() => setClickLocation(false)}>Back home</button>
+            <button onClick={() => window.location.reload(false)}>
+              Back home
+            </button>
           </div>
         </div>
         <div className="image-container">
