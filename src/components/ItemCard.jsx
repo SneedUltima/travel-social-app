@@ -7,7 +7,7 @@ import "../styles/ItemCard.scss";
 import { AuthContext } from "../context/AuthContext";
 
 const ItemCard = ({ image, author, date, tags, title, message, likes }) => {
-  const { locationInfo, setLocationInfo, clickLocation, setClickLocation } =
+  const { locationInfo, setLocationInfo, setClickLocation } =
     useContext(AuthContext);
   const [like, setLike] = useState(false);
 

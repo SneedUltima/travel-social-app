@@ -3,7 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 import "../styles/ItemInfo.scss";
 
 const LocationInfo = () => {
-  const { locationInfo } = useContext(AuthContext);
+  const { locationInfo, setClickLocation } = useContext(AuthContext);
 
   return (
     <div className="item-info-container">
@@ -19,8 +19,11 @@ const LocationInfo = () => {
             <p>{locationInfo.message}</p>
           </div>
           <div className="author-text">
-            <p>{locationInfo.author}</p>
-            <p id="time">{locationInfo.date}</p>
+            <p>Created by {locationInfo.author}</p>
+            <p id="time">At {locationInfo.date}</p>
+          </div>
+          <div className="button">
+            <button onClick={() => setClickLocation(false)}>Back home</button>
           </div>
         </div>
         <div className="image-container">
