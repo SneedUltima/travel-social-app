@@ -10,8 +10,10 @@ $background-color: #1a2238;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 10px;
   width: 75vw;
-  background-color: white;
+  background-color: rgb(73, 73, 73);
+  color: white;
   height: fit-content;
+  overflow: hidden;
 
   .item-info-wrapper {
     display: flex;
@@ -29,7 +31,7 @@ $background-color: #1a2238;
         font-size: 12px;
         display: flex;
         gap: 5px;
-        color: rgb(112, 111, 111);
+        color: rgb(188, 188, 188);
       }
       .text {
         font-size: 16px;
@@ -61,6 +63,58 @@ $background-color: #1a2238;
         height: 20vw;
         object-fit: cover;
         border-radius: 10px;
+      }
+    }
+  }
+
+  .comments-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 10px;
+    background-color: rgb(49, 49, 48);
+    color: white;
+
+    #title {
+      font-weight: bold;
+    }
+
+    .comment {
+      background-color: rgb(66, 66, 66);
+      display: flex;
+      align-items: center;
+      padding: 5px 5px;
+      border-radius: 20px;
+      gap: 10px;
+      .comment-image-container {
+        img {
+          width: 50px;
+          border-radius: 50%;
+        }
+      }
+      .comment-text-container {
+        #comment {
+          font-style: italic;
+        }
+      }
+    }
+
+    button {
+      width: 170px;
+      padding: 5px 5px;
+      border: none;
+      cursor: pointer;
+      background-color: rgb(109, 109, 109);
+      color: white;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+
+      &:hover {
+        background-color: rgb(117, 117, 117);
       }
     }
   }

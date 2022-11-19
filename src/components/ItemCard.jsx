@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { faThumbsUp as faLightThumbsUp } from "@fortawesome/free-regular-svg-icons";
@@ -7,7 +7,16 @@ import { AuthContext } from "../context/AuthContext";
 import { doc, increment, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
-const ItemCard = ({ image, author, date, tags, title, message, likes }) => {
+const ItemCard = ({
+  image,
+  author,
+  date,
+  tags,
+  title,
+  message,
+  comments,
+  likes,
+}) => {
   const { locationInfo, setLocationInfo, setClickLocation } =
     useContext(AuthContext);
   const [like, setLike] = useState(false);
@@ -24,6 +33,7 @@ const ItemCard = ({ image, author, date, tags, title, message, likes }) => {
       tags,
       title,
       message,
+      comments,
       likes,
     }));
   };

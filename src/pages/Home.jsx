@@ -51,6 +51,7 @@ const Home = () => {
                   title={doc.data.title}
                   message={doc.data.message}
                   likes={doc.data.likes}
+                  comments={doc.data.comments}
                   key={doc.data.title}
                 />
               ))

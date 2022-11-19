@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import "../styles/ItemInfo.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const LocationInfo = () => {
-  const { locationInfo, setClickLocation } = useContext(AuthContext);
+  const { locationInfo } = useContext(AuthContext);
 
   return (
     <div className="item-info-container">
@@ -31,6 +33,26 @@ const LocationInfo = () => {
         <div className="image-container">
           <img src={locationInfo.image} alt="" />
         </div>
+      </div>
+      <div className="comments-container">
+        <p id="title">Comments</p>
+        {locationInfo.comments.map((comment, index) => (
+          <div className="comment" key={index}>
+            <div className="comment-image-container">
+              <img src={comment.image} alt="" />
+            </div>
+            <div className="comment-text-container">
+              <p>{comment.author}</p>
+              <p id="comment">"{comment.comment}"</p>
+            </div>
+          </div>
+        ))}
+        <button>
+          <div className="button-plus">
+            <FontAwesomeIcon id="button-icon" icon={faPlus} />
+          </div>
+          <div className="button-text">Add a comment</div>
+        </button>
       </div>
     </div>
   );
