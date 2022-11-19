@@ -117,5 +117,23 @@ $background-color: #1a2238;
         background-color: rgb(117, 117, 117);
       }
     }
+
+    .comment-modal {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      input {
+        border-radius: 5px;
+        border: none;
+        padding: 5px 5px;
+        width: 800px;
+      }
+
+      button {
+        width: 30px;
+        cursor: pointer;
+      }
+    }
   }
 }

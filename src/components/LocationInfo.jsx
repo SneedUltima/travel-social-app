@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import "../styles/ItemInfo.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const LocationInfo = () => {
   const { locationInfo } = useContext(AuthContext);
+  const [openModal, setOpenModal] = useState(false);
 
   return (
     <div className="item-info-container">
@@ -53,8 +54,21 @@ const LocationInfo = () => {
           <div className="button-plus">
             <FontAwesomeIcon id="button-icon" icon={faPlus} />
           </div>
-          <div className="button-text">Add a comment</div>
+          <div className="button-text" onClick={() => setOpenModal(true)}>
+            Add a comment
+          </div>
         </button>
+        {openModal && (
+          <div className="comment-modal">
+            <input type="text" placeholder="Add your thoughts..." />
+            <button>
+              <FontAwesomeIcon id="add-icon" icon={faPlus} />
+            </button>
+            <button onClick={() => setOpenModal(false)}>
+              <FontAwesomeIcon id="close-icon" icon={faXmark} />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
