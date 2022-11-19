@@ -36,17 +36,19 @@ const LocationInfo = () => {
       </div>
       <div className="comments-container">
         <p id="title">Comments</p>
-        {locationInfo.comments.map((comment, index) => (
-          <div className="comment" key={index}>
-            <div className="comment-image-container">
-              <img src={comment.image} alt="" />
-            </div>
-            <div className="comment-text-container">
-              <p>{comment.author}</p>
-              <p id="comment">"{comment.comment}"</p>
-            </div>
-          </div>
-        ))}
+        {!locationInfo.comments
+          ? null
+          : locationInfo.comments.map((comment, index) => (
+              <div className="comment" key={index}>
+                <div className="comment-image-container">
+                  <img src={comment.image} alt="" />
+                </div>
+                <div className="comment-text-container">
+                  <p>{comment.author}</p>
+                  <p id="comment">"{comment.comment}"</p>
+                </div>
+              </div>
+            ))}
         <button>
           <div className="button-plus">
             <FontAwesomeIcon id="button-icon" icon={faPlus} />
