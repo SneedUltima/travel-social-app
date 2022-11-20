@@ -3,10 +3,30 @@ import { AuthContext } from "../context/AuthContext";
 import "../styles/ItemInfo.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { doc, setDoc, addDoc, updateDoc, arrayUnion } from "firebase/firestore";
+import { db } from "../firebase";
 
 const LocationInfo = () => {
-  const { locationInfo } = useContext(AuthContext);
+  const { locationInfo, currentUser } = useContext(AuthContext);
   const [openModal, setOpenModal] = useState(false);
+  const [comment, setComment] = useState("");
+
+  const handleChange = (event) => {
+    setComment(event.target.value);
+  };
+
+  const handleAdd = async (title) => {
+    const commentsRef = doc(db, "locations", title);
+    await updateDoc(commentsRef, {
+      comments: arrayUnion({
+        author: currentUser.displayName,
+        comment: comment,
+        image: currentUser.photoURL,
+      }),
+    });
+
+    setOpenModal(false);
+  };
 
   return (
     <div className="item-info-container">
@@ -60,9 +80,17 @@ const LocationInfo = () => {
         </button>
         {openModal && (
           <div className="comment-modal">
-            <input type="text" placeholder="Add your thoughts..." />
+            <input
+              type="text"
+              placeholder="Add your thoughts..."
+              onChange={handleChange}
+            />
             <button>
-              <FontAwesomeIcon id="add-icon" icon={faPlus} />
+              <FontAwesomeIcon
+                id="add-icon"
+                icon={faPlus}
+                onClick={() => handleAdd(locationInfo.title)}
+              />
             </button>
             <button onClick={() => setOpenModal(false)}>
               <FontAwesomeIcon id="close-icon" icon={faXmark} />
