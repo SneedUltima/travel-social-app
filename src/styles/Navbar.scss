@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap");
 
+@mixin mobile {
+  @media screen and (max-width: 480px) {
+    @content;
+  }
+}
+
 $background-color: #1a2238;
 $button-color: #fa5f30;
 
@@ -20,17 +26,28 @@ $button-color: #fa5f30;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
     rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  @include mobile {
+    width: 90vw;
+    height: 12vh;
+  }
 
   .logo {
     color: white;
     font-family: "Josefin Sans", sans-serif;
     font-size: 24px;
     cursor: pointer;
+    @include mobile {
+      font-size: 20px;
+    }
   }
   .user-container {
     display: flex;
     align-items: center;
     gap: 5px;
+
+    @include mobile {
+      gap: 3px;
+    }
 
     img {
       height: 35px;
