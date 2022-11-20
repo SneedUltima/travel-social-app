@@ -89,8 +89,8 @@ const AddLocation = () => {
           <textarea
             name="message"
             id="message"
-            cols="13"
-            rows="6"
+            cols="16"
+            rows="8"
             placeholder="Message"
             onChange={(event) => setMessage(event.target.value)}
             value={message}
