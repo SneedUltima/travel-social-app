@@ -1,21 +1,54 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
 import "../styles/ItemInfo.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { doc, setDoc, addDoc, updateDoc, arrayUnion } from "firebase/firestore";
+import {
+  doc,
+  setDoc,
+  addDoc,
+  updateDoc,
+  arrayUnion,
+  query,
+  collection,
+  onSnapshot,
+  QuerySnapshot,
+  where,
+} from "firebase/firestore";
 import { db } from "../firebase";
 
 const LocationInfo = () => {
   const { locationInfo, currentUser } = useContext(AuthContext);
   const [openModal, setOpenModal] = useState(false);
   const [comment, setComment] = useState("");
+  const [comments, setComments] = useState([]);
 
   const handleChange = (event) => {
     setComment(event.target.value);
   };
 
+  useEffect(() => {
+    const title = locationInfo.title;
+    const q = query(collection(db, "locations"), where("title", "==", title));
+    const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
+      let commentsArr = [];
+      QuerySnapshot.forEach((comment) => {
+        commentsArr.push(...comment.data().comments);
+      });
+      setComments(commentsArr);
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  console.log(comments);
+
   const handleAdd = async (title) => {
+    if (comment === "") {
+      alert("Please add a valid comment");
+      return;
+    }
     const commentsRef = doc(db, "locations", title);
     await updateDoc(commentsRef, {
       comments: arrayUnion({
@@ -24,7 +57,6 @@ const LocationInfo = () => {
         image: currentUser.photoURL,
       }),
     });
-
     setOpenModal(false);
   };
 
@@ -57,9 +89,9 @@ const LocationInfo = () => {
       </div>
       <div className="comments-container">
         <p id="title">Comments</p>
-        {!locationInfo.comments
+        {!comments
           ? null
-          : locationInfo.comments.map((comment, index) => (
+          : comments.map((comment, index) => (
               <div className="comment" key={index}>
                 <div className="comment-image-container">
                   <img src={comment.image} alt="" />
