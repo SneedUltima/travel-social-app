@@ -101,7 +101,14 @@ const LocationInfo = () => {
           <div className="button-plus">
             <FontAwesomeIcon id="button-icon" icon={faPlus} />
           </div>
-          <div className="button-text" onClick={() => setOpenModal(true)}>
+          <div
+            className="button-text"
+            onClick={() =>
+              !currentUser.isAnonymous
+                ? setOpenModal(true)
+                : setOpenModal(false)
+            }
+          >
             Add a comment
           </div>
         </button>
