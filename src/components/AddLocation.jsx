@@ -106,7 +106,7 @@ const AddLocation = () => {
             <FontAwesomeIcon id="file-icon" icon={faImages} />
             <span>Add an Image</span>
           </label>
-          <button type="submit" disabled={!title && !message && !tags}>
+          <button type="submit" disabled={!title || !message || !tags}>
             Add Location
           </button>
           {error && <span id="error">Something went wrong</span>}

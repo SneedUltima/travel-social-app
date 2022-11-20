@@ -10,17 +10,11 @@ import { db } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
 
 const Home = () => {
-  const {
-    docs,
-    setDocs,
-    locationInfo,
-    setLocationInfo,
-    clickLocation,
-    setClickLocation,
-  } = useContext(AuthContext);
+  const { docs, setDocs, clickLocation } = useContext(AuthContext);
 
   useEffect(() => {
     const query = async () => {
+      setDocs([]);
       const docs = await getDocs(collection(db, "locations"));
       docs.forEach((doc) => {
         const data = doc.data();
