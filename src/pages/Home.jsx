@@ -51,7 +51,7 @@ const Home = () => {
             )}
           </div>
           <div className="user-container">
-            <AddLocation />
+            {!clickLocation ? <AddLocation /> : null}
           </div>
         </div>
       </div>

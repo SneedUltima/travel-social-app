@@ -74,7 +74,7 @@ const LocationInfo = () => {
           </div>
           <div className="button">
             <button onClick={() => window.location.reload(false)}>
-              Back home
+              Return
             </button>
           </div>
         </div>
