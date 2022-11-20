@@ -49,10 +49,16 @@ const Login = () => {
           {error && <span>Something went wrong</span>}
         </form>
         <p>
-          Don't have an account? <Link to="/register">Register</Link>
+          Don't have an account?{" "}
+          <Link to="/register" id="Link">
+            Register
+          </Link>
         </p>
         <p>
-          Or try a <Link onClick={() => handleGuestLogin()}>Guest Account</Link>
+          Or try a{" "}
+          <Link onClick={() => handleGuestLogin()} id="Link">
+            Guest Account
+          </Link>
         </p>
       </div>
     </div>

@@ -1,6 +1,6 @@
-$background-color: #9daaf2;
-$foreground-color: #fffefe;
-$text-color: #5d5b8d;
+$background-color: rgb(235, 235, 235);
+$foreground-color: rgb(25, 25, 24);
+$text-color: white;
 
 * {
   margin: 0;
@@ -39,6 +39,7 @@ $text-color: #5d5b8d;
       gap: 10px;
 
       input {
+        color: white;
         border: none;
         padding: 10px 10px 5px 10px;
         border-bottom: 1px solid $background-color;
@@ -53,7 +54,7 @@ $text-color: #5d5b8d;
 
       button {
         border: none;
-        background-color: $background-color;
+        background-color: rgb(233, 52, 49);
         border-radius: 10px;
         width: 100px;
         padding: 10px;
@@ -62,7 +63,7 @@ $text-color: #5d5b8d;
         margin: 5px 0;
 
         &:hover {
-          background-color: darken($background-color, 5%);
+          background-color: darken(rgb(233, 52, 49), 10%);
           transition: 0.3s;
         }
       }
@@ -87,6 +88,11 @@ $text-color: #5d5b8d;
 
     p {
       font-size: 14px;
+      color: white;
+
+      #Link {
+        color: rgb(233, 52, 49);
+      }
     }
   }
 }
