@@ -5,14 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import {
   doc,
-  setDoc,
-  addDoc,
   updateDoc,
   arrayUnion,
   query,
   collection,
   onSnapshot,
-  QuerySnapshot,
   where,
 } from "firebase/firestore";
 import { db } from "../firebase";
@@ -41,8 +38,6 @@ const LocationInfo = () => {
       unsubscribe();
     };
   }, []);
-
-  console.log(comments);
 
   const handleAdd = async (title) => {
     if (comment === "") {

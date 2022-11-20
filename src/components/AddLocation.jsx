@@ -50,6 +50,7 @@ const AddLocation = () => {
               date: date,
               photoURL: downloadURL,
               author: currentUser.displayName,
+              comments: [],
             });
             setDocs((prevState) => [
               ...prevState,
@@ -62,6 +63,7 @@ const AddLocation = () => {
                   date: date,
                   photoURL: downloadURL,
                   author: currentUser.displayName,
+                  comments: [],
                 },
               },
             ]);
