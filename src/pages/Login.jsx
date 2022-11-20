@@ -2,7 +2,11 @@ import React from "react";
 import { useState } from "react";
 import "../styles/Account.scss";
 import { useNavigate, Link } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  getAuth,
+  signInAnonymously,
+} from "firebase/auth";
 import { Auth } from "../firebase";
 
 const Login = () => {
@@ -22,6 +26,17 @@ const Login = () => {
     }
   };
 
+  const handleGuestLogin = () => {
+    const auth = getAuth();
+    signInAnonymously(auth)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="formContainer">
       <div className="formWrapper">
@@ -35,6 +50,9 @@ const Login = () => {
         </form>
         <p>
           Don't have an account? <Link to="/register">Register</Link>
+        </p>
+        <p>
+          Or try a <Link onClick={() => handleGuestLogin()}>Guest Account</Link>
         </p>
       </div>
     </div>

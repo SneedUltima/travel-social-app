@@ -3,9 +3,12 @@ import "../styles/Navbar.scss";
 import { signOut } from "firebase/auth";
 import { Auth } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
+import guestImg from "../images/guest.jpg";
 
 const Navbar = () => {
   const { currentUser } = useContext(AuthContext);
+
+  console.log(currentUser);
 
   return (
     <div className="nav-container">
@@ -13,8 +16,11 @@ const Navbar = () => {
         <p onClick={() => window.location.reload(false)}>Nomad</p>
       </div>
       <div className="user-container">
-        <img src={currentUser.photoURL} alt="Profile Picture" />
-        <p>{currentUser.displayName}</p>
+        <img
+          src={currentUser.photoURL ? currentUser.photoURL : guestImg}
+          alt="Profile Picture"
+        />
+        <p>{currentUser.displayName ? currentUser.displayName : "Guest"}</p>
         <button onClick={() => signOut(Auth)}>Logout</button>
       </div>
     </div>
