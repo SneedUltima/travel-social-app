@@ -16,6 +16,17 @@ const AddLocation = () => {
   const [tags, setTags] = useState("");
   const [file, setFile] = useState("");
 
+  const handleFile = (e) => {
+    const fileSize = e.target.files[0].size;
+    const fileMb = fileSize / 1000;
+    if (fileMb <= 210) {
+      setFile(e.target.files[0]);
+    } else {
+      alert("File size too large");
+      setFile("");
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -108,20 +119,20 @@ const AddLocation = () => {
             style={{ display: "none" }}
             type="file"
             id="file"
-            onChange={(e) => setFile(e.target.files[0])}
+            onChange={(e) => handleFile(e)}
           />
           <label htmlFor="file">
             <FontAwesomeIcon id="file-icon" icon={faImages} />
             <span>Add an Image</span>
-            <p id="warning">Max file size 300 KB</p>
+            <p id="warning">Max file size 210 KB</p>
           </label>
+          {error && <span id="error">Something went wrong</span>}
           <button
             type="submit"
             disabled={!title || !message || !tags || currentUser.isAnonymous}
           >
             Add Location
           </button>
-          {error && <span id="error">Something went wrong</span>}
         </form>
       </div>
     </div>

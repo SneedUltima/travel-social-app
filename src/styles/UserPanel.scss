@@ -8,12 +8,12 @@ $text-color: 9DABF3;
 }
 
 .panel-wrapper {
-  height: 370px;
+  height: 390px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   width: 200px;
   .panel-container {
-    height: 370px;
+    height: 390px;
 
     background-color: white;
     form {
@@ -73,6 +73,12 @@ $text-color: 9DABF3;
           background-color: lighten($background-color, 10%);
           transition: 0.3s;
         }
+      }
+
+      #error {
+        font-size: 12px;
+        font-weight: bold;
+        color: red;
       }
 
       #warning {

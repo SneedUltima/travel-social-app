@@ -11,8 +11,20 @@ import { useNavigate, Link } from "react-router-dom";
 
 const Register = () => {
   const [error, setError] = useState(false);
+  const [file, setFile] = useState("");
 
   const navigate = useNavigate();
+
+  const handleFile = (e) => {
+    const fileSize = e.target.files[0].size;
+    const fileMb = fileSize / 1000;
+    if (fileMb <= 210) {
+      setFile(e.target.files[0]);
+    } else {
+      alert("File size too large, max size 210 KB");
+      setFile("");
+    }
+  };
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -61,7 +73,12 @@ const Register = () => {
           <input type="text" placeholder="Display Name" />
           <input type="email" placeholder="Email" />
           <input type="password" placeholder="Password" />
-          <input style={{ display: "none" }} type="file" id="file" />
+          <input
+            style={{ display: "none" }}
+            type="file"
+            id="file"
+            onChange={(e) => handleFile(e)}
+          />
           <label htmlFor="file">
             <FontAwesomeIcon id="file-icon" icon={faImages} />
             <span>Add an avatar</span>
