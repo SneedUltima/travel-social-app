@@ -17,8 +17,7 @@ const ItemCard = ({
   comments,
   likes,
 }) => {
-  const { locationInfo, setLocationInfo, setClickLocation } =
-    useContext(AuthContext);
+  const { setLocationInfo, setClickLocation } = useContext(AuthContext);
   const [like, setLike] = useState(false);
   const [likeCounter, setLikeCounter] = useState(likes);
 

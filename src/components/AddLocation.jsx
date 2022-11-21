@@ -86,7 +86,6 @@ const AddLocation = () => {
       );
     } catch (error) {
       setError(true);
-      console.log(error);
     }
   };
 

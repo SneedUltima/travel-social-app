@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import "../styles/Home.scss";
 import Navbar from "../components/Navbar";
 import ItemCard from "../components/ItemCard";
