@@ -53,8 +53,9 @@ $text-color: white;
       }
 
       button {
-        border: none;
-        background-color: rgb(233, 52, 49);
+        border: 2px solid rgb(233, 52, 49);
+        background-color: transparent;
+        color: white;
         border-radius: 10px;
         width: 100px;
         padding: 10px;
@@ -63,7 +64,7 @@ $text-color: white;
         margin: 5px 0;
 
         &:hover {
-          background-color: darken(rgb(233, 52, 49), 10%);
+          background-color: rgb(233, 52, 49);
           transition: 0.3s;
         }
       }

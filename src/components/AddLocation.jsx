@@ -8,32 +8,35 @@ import { AuthContext } from "../context/AuthContext";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const AddLocation = () => {
-  const { currentUser, docs, setDocs } = useContext(AuthContext);
+  const { currentUser, setDocs } = useContext(AuthContext);
 
   const [error, setError] = useState(false);
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
   const [tags, setTags] = useState("");
+  const [file, setFile] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const year = new Date().getFullYear();
     let monthNumber = new Date();
-    let month = monthNumber.toLocaleString("default", { month: "long" });
+    let month = monthNumber.toLocaleString("default", { month: "short" });
     const day = new Date().getDate();
     const date = `${day} ${month} ${year}`;
     const title = e.target[0].value;
     const message = e.target[1].value;
     const tags = e.target[2].value;
-    const file = e.target[3].files[0];
 
     setTitle("");
     setMessage("");
     setTags("");
+    setFile("");
 
     try {
-      const storageRef = ref(Storage, title);
+      const name = new Date().getTime() + file.name;
+      console.log(name);
+      const storageRef = ref(Storage, name);
       const uploadTask = uploadBytesResumable(storageRef, file);
 
       uploadTask.on(
@@ -101,10 +104,16 @@ const AddLocation = () => {
             onChange={(event) => setTags(event.target.value)}
             value={tags}
           />
-          <input style={{ display: "none" }} type="file" id="file" />
+          <input
+            style={{ display: "none" }}
+            type="file"
+            id="file"
+            onChange={(e) => setFile(e.target.files[0])}
+          />
           <label htmlFor="file">
             <FontAwesomeIcon id="file-icon" icon={faImages} />
             <span>Add an Image</span>
+            <p id="warning">Max file size 300 KB</p>
           </label>
           <button
             type="submit"
