@@ -8,8 +8,6 @@ import guestImg from "../images/guest.jpg";
 const Navbar = () => {
   const { currentUser } = useContext(AuthContext);
 
-  console.log(currentUser);
-
   return (
     <div className="nav-container">
       <div className="logo">
